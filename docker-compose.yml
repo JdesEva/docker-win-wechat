@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+  wechat:
+    image: docker-win-wechat:latest
+    container_name: DoChat
+    restart: "no"  # 等效于 --rm 参数，容器退出后自动删除
+    stdin_open: true  # 对应 -i 参数
+    volumes:
+      - "$HOME/DoChat/WeChat Files/:/home/user/WeChat Files/"  # 微信文件存储目录
+      - "$HOME/DoChat/Application Data:/home/user/.wine/drive_c/users/user/Application Data"  # 应用数据目录
+      - "/tmp/.X11-unix:/tmp/.X11-unix"  # X11 套接字映射
+    environment:
+      - DISPLAY=$DISPLAY  # 显示环境变量
+      - XMODIFIERS=@im=fcitx  # 输入法配置
+      - GTK_IM_MODULE=fcitx
+      - QT_IM_MODULE=fcitx
+      - GID=$GID  # 用户组ID（需在.env中定义）
+      - UID=$UID  # 用户ID（需在.env中定义）
+    ipc: host  # 共享主机IPC命名空间
+    privileged: true  # 特权模式
+    deploy:
+      resources:
+        limits:
+          memory: 2G  # 建议限制内存（可选）

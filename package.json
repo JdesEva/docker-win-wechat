@@ -1,0 +1,7 @@
+{
+  "name": "docker-win-wechat",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "docker build -t docker-win-wechat ."
+  }
+}
