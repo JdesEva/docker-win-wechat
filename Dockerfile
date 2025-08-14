@@ -10,6 +10,7 @@ RUN apt update && apt install -y \
     pev \
     sudo \
     vim \
+    curl \
     pulseaudio-utils \
   && apt-get autoremove -y \
   && apt-get clean \
