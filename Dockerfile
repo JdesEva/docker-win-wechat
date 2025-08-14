@@ -25,12 +25,18 @@ COPY [A-Z]* /
 COPY VERSION /VERSION.docker-wechat
 COPY pulse-client.conf /etc/pulse/client.conf
 
-RUN chown user /home \
+# RUN chown user /home \
+#   && localedef -i zh_CN -c -f UTF-8 zh_CN.UTF-8 \
+#   && echo 'user ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
+RUN useradd -m user && chown user /home \
   && localedef -i zh_CN -c -f UTF-8 zh_CN.UTF-8 \
   && echo 'user ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 USER user
+
 RUN bash -x /setup.sh
+
 ENTRYPOINT [ "/entrypoint.sh" ]
 
 #
