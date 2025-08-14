@@ -19,7 +19,8 @@ ENV \
   LANG=zh_CN.UTF-8 \
   LC_ALL=zh_CN.UTF-8
 
-COPY --chown=user:group container_root/ /
+# COPY --chown=user:group container_root/ /
+COPY container_root/ /
 COPY [A-Z]* /
 COPY VERSION /VERSION.docker-wechat
 COPY pulse-client.conf /etc/pulse/client.conf
