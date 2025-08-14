@@ -8,7 +8,10 @@ set -eo pipefail
 # HOME_TGZ_URL=https://github.com/huan/docker-wechat/releases/download/v0.1/home.2.7.1.88.tgz
 # HOME_TGZ_URL=https://github.com/huan/docker-wechat/releases/download/v0.1/home.2.8.0.121.tgz
 # HOME_TGZ_URL=https://github.com/huan/docker-wechat/releases/download/v0.1/home.2.9.0.114.tgz
-HOME_TGZ_URL=https://github.com/huan/docker-wechat/releases/download/v0.1/home.3.3.0.115.tgz
+# HOME_TGZ_URL=https://github.com/huan/docker-wechat/releases/download/v0.1/home.3.3.0.115.tgz
+HOME_TGZ_URL=https://dldir1v6.qq.com/weixin/Universal/Windows/WeChatWin.exe
 
-curl -sL "$HOME_TGZ_URL" | tar zxf -
+# curl -sL "$HOME_TGZ_URL" | tar zxf -
+curl -sL "$HOME_TGZ_URL" > WeChatWin.exe
+
 echo 'Artifacts Downloaded'
